@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace euler
@@ -8,12 +9,11 @@ namespace euler
     {
         public static void Run()
         {
-            var generator = new PrimeGenerator();
-            long number = 600851475143;
+            long number = 1000;
+            var generator = new SieveOfEratosthenes(number);
 
-            int prime;
             int largest = 0;
-            while ((prime = generator.Next()) <= number)
+            foreach (var prime in generator.Primes)
             {
                 Console.WriteLine(prime);
                 if (number%prime == 0)
@@ -27,7 +27,7 @@ namespace euler
     {
         private List<int> bucket;
 
-        public SieveOfEratosthenes(int searchLimit)
+        public SieveOfEratosthenes(long searchLimit)
         {
             bucket = new List<int>();
             for (int i = 2; i <= searchLimit; i++)
@@ -40,8 +40,15 @@ namespace euler
             {
                 while (bucket.Count > 0)
                 {
+                    var retVal = bucket.First();
+
+                    foreach (var item in bucket.ToArray())
+                    {
+                        if (item%retVal == 0)
+                            bucket.Remove(item);
+                    }
+                    yield return retVal;
                 }
-                return null;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace euler
 {
@@ -16,6 +17,7 @@ namespace euler
             while ((prime = generator.Next()) <= number)
             {
                 Console.WriteLine(prime);
+                Thread.Sleep(300);
                 if (number%prime == 0)
                     largest = prime;
             }
