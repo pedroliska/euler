@@ -5,6 +5,9 @@ using System.Threading;
 
 namespace euler
 {
+    /// <summary>
+    /// Largest prime factor
+    /// </summary>
     public class Problem3a
     {
         public static void Run()

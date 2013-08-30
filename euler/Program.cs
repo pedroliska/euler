@@ -1,10 +1,12 @@
-﻿namespace euler
+﻿using euler.solutions;
+
+namespace euler
 {
     public class Program
     {
         private static void Main(string[] args)
         {
-            Problem3b.Run();
+            Problem4.Run();
         }
     }
 }

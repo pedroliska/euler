@@ -1,36 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
-namespace euler
+namespace euler.solutions
 {
+    /// <summary>
+    /// Largest prime factor. Sieve of Atkins is faster.
+    /// </summary>
     public class Problem3b
     {
         public static void Run()
         {
-            long number = 1000;
-            var generator = new SieveOfEratosthenes(number);
+            var start = DateTime.Now;
+
+            long number = 600851475143;
+            long maxPrime = (int)Math.Floor(Math.Sqrt(number));
+            var generator = new SieveOfEratosthenes(maxPrime, true);
 
             int largest = 0;
-            foreach (var prime in generator.Primes)
+            foreach (int prime in generator.Primes)
             {
                 Console.WriteLine(prime);
                 if (number%prime == 0)
                     largest = prime;
             }
-            Console.WriteLine(largest);
+
+            Console.WriteLine("{0} is the largest prime factor of {1}", largest, number);
+            Console.WriteLine("it took {0} seconds to calcluate this", DateTime.Now.Subtract(start).TotalSeconds);
         }
     }
 
     public class SieveOfEratosthenes
     {
-        private List<int> bucket;
+        private readonly List<int> bucket;
 
-        public SieveOfEratosthenes(long searchLimit)
+        public SieveOfEratosthenes(long primeSearchLimit, bool skip2 = false)
         {
             bucket = new List<int>();
-            for (int i = 2; i <= searchLimit; i++)
+            int startOn = skip2 ? 3 : 2;
+            int incrementBy = skip2 ? 2 : 1;
+            for (int i = startOn; i <= primeSearchLimit; i += incrementBy)
                 bucket.Add(i);
         }
 
@@ -40,12 +49,15 @@ namespace euler
             {
                 while (bucket.Count > 0)
                 {
-                    var retVal = bucket.First();
+                    int retVal = bucket.First();
 
-                    foreach (var item in bucket.ToArray())
+                    foreach (int item in bucket.ToArray())
                     {
                         if (item%retVal == 0)
+                        {
+                            //Console.WriteLine("removing " + item + " from bucket");
                             bucket.Remove(item);
+                        }
                     }
                     yield return retVal;
                 }

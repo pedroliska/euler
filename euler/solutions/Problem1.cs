@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace euler
+namespace euler.solutions
 {
+    /// <summary>
+    /// Multiples of 3 and 5
+    /// </summary>
     public class Problem1
     {
         public static void Run()

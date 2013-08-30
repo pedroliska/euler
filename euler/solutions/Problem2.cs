@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace euler
+namespace euler.solutions
 {
+    /// <summary>
+    /// Even fibonacci numbers
+    /// </summary>
     public class Problem2
     {
         public static void Run()
