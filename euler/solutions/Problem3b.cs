@@ -30,6 +30,9 @@ namespace euler.solutions
         }
     }
 
+    /// <summary>
+    /// SieveOfPedro is way quicker than this
+    /// </summary>
     public class SieveOfEratosthenes
     {
         private readonly List<int> bucket;

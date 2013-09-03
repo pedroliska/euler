@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace euler
@@ -56,5 +54,4 @@ namespace euler
             return true;
         }
     }
-
 }
