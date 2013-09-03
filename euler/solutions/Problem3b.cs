@@ -14,7 +14,7 @@ namespace euler.solutions
             var start = DateTime.Now;
 
             long number = 600851475143;
-            long maxPrime = (int)Math.Floor(Math.Sqrt(number));
+            int maxPrime = (int)Math.Floor(Math.Sqrt(number));
             var generator = new SieveOfEratosthenes(maxPrime, true);
 
             int largest = 0;
@@ -34,9 +34,10 @@ namespace euler.solutions
     {
         private readonly List<int> bucket;
 
-        public SieveOfEratosthenes(long primeSearchLimit, bool skip2 = false)
+        public SieveOfEratosthenes(int primeSearchLimit, bool skip2 = false)
         {
-            bucket = new List<int>();
+            var max = skip2 ? primeSearchLimit/2 : primeSearchLimit;
+            bucket = new List<int>(max);
             int startOn = skip2 ? 3 : 2;
             int incrementBy = skip2 ? 2 : 1;
             for (int i = startOn; i <= primeSearchLimit; i += incrementBy)

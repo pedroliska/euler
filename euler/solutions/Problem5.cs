@@ -7,12 +7,16 @@ namespace euler.solutions
     {
         public static void Run()
         {
+            var start = DateTime.Now;
+
             int number = 19;
             do
             {
                 number++;
             } while (!EvenlyDivisible(number));
+
             Console.WriteLine(number);
+            Console.WriteLine("it took {0} seconds to calcluate this", DateTime.Now.Subtract(start).TotalSeconds);
         }
 
         private static bool EvenlyDivisible(int number)
