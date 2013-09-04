@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace euler.solutions
 {
@@ -29,29 +27,6 @@ namespace euler.solutions
         private int _potentialPrime;
 
         public int Next()
-        {
-            //return NextSkipEven(); // 2.3 seconds to 1000
-            return NextWithSquareRootOptimization(); // 0.001 seconds to 1000
-        }
-
-        private int NextSkipEven()
-        {
-            if (_pastPrimes == null)
-            {
-                _pastPrimes = new List<int>();
-                _potentialPrime = 3;
-                return 2;
-            }
-
-            // check if a past prime is a factor of potentialPrime
-            while (_pastPrimes.Any(p => _potentialPrime%p == 0))
-                _potentialPrime += 2;
-
-            _pastPrimes.Add(_potentialPrime);
-            return _potentialPrime;
-        }
-
-        private int NextWithSquareRootOptimization()
         {
             if (_pastPrimes == null)
             {
