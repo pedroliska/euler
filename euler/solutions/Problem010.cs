@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 
 namespace euler.solutions
 {
-    public class Problem10
+    public class Problem010
     {
         public static void Run()
         {
@@ -15,7 +13,7 @@ namespace euler.solutions
 
             var sieve = new SieveOfPedro();
             long sum = 0;
-            var nextPrime = 0;
+            int nextPrime = 0;
             while ((nextPrime = sieve.Next()) < maxPrime)
             {
                 sum += nextPrime;

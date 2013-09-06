@@ -2,7 +2,7 @@
 
 namespace euler.solutions
 {
-    public class Problem6
+    public class Problem006
     {
         public static void Run()
         {

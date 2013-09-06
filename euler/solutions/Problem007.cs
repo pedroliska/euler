@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace euler.solutions
 {
-    public class Problem7
+    public class Problem007
     {
         public static void Run()
         {

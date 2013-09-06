@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace euler.solutions
 {
-    public class Problem5
+    public class Problem005
     {
         public static void Run()
         {

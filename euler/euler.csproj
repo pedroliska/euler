@@ -41,19 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="solutions\Problem10.cs" />
-    <Compile Include="solutions\Problem3b.cs" />
-    <Compile Include="solutions\Problem1.cs" />
-    <Compile Include="solutions\Problem2.cs" />
+    <Compile Include="solutions\Problem002.cs" />
+    <Compile Include="solutions\Problem011.cs" />
+    <Compile Include="solutions\Problem010.cs" />
+    <Compile Include="solutions\Problem003b.cs" />
+    <Compile Include="solutions\Problem001.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="solutions\Problem3a.cs" />
-    <Compile Include="solutions\Problem4.cs" />
-    <Compile Include="solutions\Problem5.cs" />
-    <Compile Include="solutions\Problem6.cs" />
-    <Compile Include="solutions\Problem7.cs" />
-    <Compile Include="solutions\Problem8.cs" />
-    <Compile Include="solutions\Problem9.cs" />
+    <Compile Include="solutions\Problem003a.cs" />
+    <Compile Include="solutions\Problem004.cs" />
+    <Compile Include="solutions\Problem005.cs" />
+    <Compile Include="solutions\Problem006.cs" />
+    <Compile Include="solutions\Problem007.cs" />
+    <Compile Include="solutions\Problem008.cs" />
+    <Compile Include="solutions\Problem009.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

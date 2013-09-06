@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace euler.solutions
 {
-    public class Problem8
+    public class Problem008
     {
         static public void Run()
         {

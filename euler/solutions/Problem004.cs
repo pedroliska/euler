@@ -6,7 +6,7 @@ namespace euler.solutions
     /// <summary>
     /// Largest palindrome product
     /// </summary>
-    public class Problem4
+    public class Problem004
     {
         public static void Run()
         {

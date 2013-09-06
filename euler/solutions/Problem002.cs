@@ -6,7 +6,7 @@ namespace euler.solutions
     /// <summary>
     /// Even fibonacci numbers
     /// </summary>
-    public class Problem2
+    public class Problem002
     {
         public static void Run()
         {
@@ -46,4 +46,5 @@ namespace euler.solutions
             }
         }
     }
+
 }

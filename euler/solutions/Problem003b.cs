@@ -7,7 +7,7 @@ namespace euler.solutions
     /// <summary>
     /// Largest prime factor. Sieve of Atkins is faster.
     /// </summary>
-    public class Problem3b
+    public class Problem003b
     {
         public static void Run()
         {
