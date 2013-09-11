@@ -47,19 +47,14 @@ namespace euler.solutions
         }
     }
 
-    public class TimerOld
+    public static class Timer
     {
-        private readonly Stopwatch _watch;
-
-        public TimerOld()
+        public static void RecordMiliseconds(Action action)
         {
-            _watch = Stopwatch.StartNew();
-        }
-
-        public void ResultsInSeconds()
-        {
-            _watch.Stop();
-            Console.WriteLine("Completed in {0}ms", _watch.ElapsedMilliseconds);
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            action();
+            stopWatch.Stop();
+            Console.WriteLine("it took {0} miliseconds to calcluate this", stopWatch.ElapsedMilliseconds);
         }
     }
 }
