@@ -59,6 +59,7 @@
     <Compile Include="solutions\Problem012.cs" />
     <Compile Include="solutions\Problem013.cs" />
     <Compile Include="solutions\Problem014.cs" />
+    <Compile Include="solutions\Problem015.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
