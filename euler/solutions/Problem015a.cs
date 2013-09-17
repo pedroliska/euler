@@ -3,10 +3,10 @@
 namespace euler.solutions
 {
     /// <summary>
-    /// read about binomial coeficients
-    /// http://en.wikipedia.org/wiki/Binomial_coefficient
+    /// This is trully my own solution. It ran for 30 hours without
+    /// reaching the answer.
     /// </summary>
-    public class Problem015
+    public class Problem015a
     {
         public static void Run()
         {
@@ -46,10 +46,13 @@ namespace euler.solutions
                     break;
                 dividend = dividend/2;
             }
-            //Console.WriteLine("{0} has {1} ones in its binary representation", decNumber, remainderCount);
             return remainderCount;
         }
-
+        /// <summary>
+        /// This one is a bit more optimized but it still takes days to 
+        /// come to an answer. It can be optimized a bit more by counting
+        /// the zeros also, but it would still take too long.
+        /// </summary>
         private static int CountOnes2(int decNumber, int gridSize)
         {
             int mask = 1;
