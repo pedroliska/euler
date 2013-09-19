@@ -5,9 +5,9 @@ namespace euler.solutions
 {
     public class Problem018
     {
-         public static void Run()
-         {
-             var rawTriangle = @"
+        public static void Run()
+        {
+            string rawTriangle = @"
 75
 95 64
 17 47 82
@@ -24,33 +24,37 @@ namespace euler.solutions
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
 
-             var triangle = GetTriangle(rawTriangle);
+            int[][] triangle = GetTriangle(rawTriangle);
 
-             Timer.RecordMiliseconds(() =>
-             {
-                 var maxSum = 0;
-                 int[] currentLineSums = null;
-                 int[] previousLineSums = triangle.Last();
+            CalculateMaxSum(triangle);
+        }
 
-                 foreach (var line in triangle.Reverse().Skip(1))
-                 {
-                     currentLineSums = new int[line.Length];
-                     for (int itemIndex = 0; itemIndex < line.Length; itemIndex++)
-                     {
-                         var item = line[itemIndex];
-                         currentLineSums[itemIndex] = previousLineSums[itemIndex] > previousLineSums[itemIndex + 1]
-                             ? previousLineSums[itemIndex] + item
-                             : previousLineSums[itemIndex + 1] + item;
-                     }
-                     previousLineSums = currentLineSums;
-                 }
+        public static void CalculateMaxSum(int[][] triangle)
+        {
+            Timer.RecordMiliseconds(() =>
+            {
+                int maxSum = 0;
+                int[] currentLineSums = null;
+                int[] previousLineSums = triangle.Last();
 
-                 Console.WriteLine("{0} is the maximum total from top to bottom of the triangle", currentLineSums.First());
-             });
+                foreach (var line in triangle.Reverse().Skip(1))
+                {
+                    currentLineSums = new int[line.Length];
+                    for (int itemIndex = 0; itemIndex < line.Length; itemIndex++)
+                    {
+                        int item = line[itemIndex];
+                        currentLineSums[itemIndex] = previousLineSums[itemIndex] > previousLineSums[itemIndex + 1]
+                            ? previousLineSums[itemIndex] + item
+                            : previousLineSums[itemIndex + 1] + item;
+                    }
+                    previousLineSums = currentLineSums;
+                }
 
-         }
+                Console.WriteLine("{0} is the maximum total from top to bottom of the triangle", currentLineSums.First());
+            });
+        }
 
-        private static int[][] GetTriangle(string rawTriangle)
+        public static int[][] GetTriangle(string rawTriangle)
         {
             string[] sLines = rawTriangle.Split(new[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
             var retVal = new int[sLines.Length][];
