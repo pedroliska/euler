@@ -9,10 +9,10 @@ namespace euler.solutions
         public static void Run()
         {
             int start = 1;
-            int end = 5;
+            int end = 20000;
             Timer.RecordMiliseconds(() =>
             {
-                int result = Enumerable.Range(start, end)
+                int result = Enumerable.Range(start, end - start + 1)
                     .Select(SpellOutLength)
                     .Aggregate((total, current) => total + current);
 
@@ -22,16 +22,32 @@ namespace euler.solutions
 
         private static int SpellOutLength(int number)
         {
-            return SpellOut(number).Length;
+            return SpellOut(number).Replace(" ", "").Length;
         }
 
         private static string SpellOut(int number)
         {
-            string sNumber = number.ToString();
-            int length = sNumber.Length;
+            Console.Write("{0}: ", number);
+            string retVal = "";
+            bool spelledExponent = false;
+            foreach (int exponent in new[] {4, 3, 2})
+            {
+                var divisor = (int)Math.Pow(10, exponent);
+                int divisionResult = number/divisor;
+                if (divisionResult > 0)
+                {
+                    retVal = LessThan100Spellout(divisionResult) + " " + ExponentSpellout(exponent) + " ";
+                    number = number%divisor;
+                    spelledExponent = true;
+                }
+            }
+            if (spelledExponent && number > 0)
+                retVal += "and ";
 
+            retVal += LessThan100Spellout(number);
 
-            return number.ToString();
+            Console.WriteLine(retVal);
+            return retVal;
         }
 
         private static string BasicSpellout(int number)
@@ -61,18 +77,48 @@ namespace euler.solutions
             return mapper.GetValueOrDefault(number, "");
         }
 
+        private static string LessThan100Spellout(int number)
+        {
+            string retVal = "";
+            if (number >= 20)
+            {
+                retVal += TenthsSpellout(number/10) + " ";
+                number = number%10;
+            }
+            if (number > 0)
+            {
+                retVal += BasicSpellout(number);
+            }
+            return retVal;
+        }
+
+        private static string TenthsSpellout(int tenth)
+        {
+            var mapper = new Dictionary<int, string>
+            {
+                {2, "twenty"},
+                {3, "thirty"},
+                {4, "forty"},
+                {5, "fifty"},
+                {6, "sixty"},
+                {7, "seventy"},
+                {8, "eighty"},
+                {9, "ninety"},
+            };
+            return mapper[tenth];
+        }
+
         private static string ExponentSpellout(int exponent)
         {
             var mapper = new Dictionary<int, string>
             {
-                {0, ""},
                 {1, ""},
                 {2, "hundred"},
                 {3, "thousand"},
+                {4, "million"},
             };
             return mapper.GetValueOrDefault(exponent, "");
         }
-
     }
 
     public static class EnumerationExtensions
