@@ -6,7 +6,7 @@ namespace euler
     {
         private static void Main(string[] args)
         {
-            Problem017.Run();
+            Problem019.Run();
         }
     }
 }
