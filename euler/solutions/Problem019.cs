@@ -9,17 +9,18 @@ namespace euler.solutions
         {
             Timer.RecordMiliseconds(() =>
             {
-                var day = new CalendarDay(DayOfWeek.Monday, 1900, Month.January, 1);
+                var day = new CalendarDay(DayOfWeek.Tuesday, 1901, Month.January, 1);
+                //var day = new CalendarDay(DayOfWeek.Saturday, 1904, Month.February, 28);
                 int sundayCount = 0;
                 do
                 {
-                    if (day.DayOfWeek == DayOfWeek.Sunday)
+                    //Console.WriteLine(day);
+                    if (day.DayOfWeek == DayOfWeek.Sunday && day.DayOfMonth == 1)
                         sundayCount++;
                     day = day.NextDay();
                 } while (day.Year < 2001);
 
-
-                Console.WriteLine("The 20th century had {0} sundays", sundayCount);
+                Console.WriteLine("The 20th century had {0} sundays that fell on the first of the month", sundayCount);
             });
         }
     }
@@ -64,8 +65,8 @@ namespace euler.solutions
                 bool isLastMonthOfYear = Month == Month.December;
                 if (!isLastMonthOfYear)
                 {
-                    nextMonth =Month+1;
-                    nextYear = Year; 
+                    nextMonth = Month + 1;
+                    nextYear = Year;
                 }
                 else
                 {
@@ -121,6 +122,11 @@ namespace euler.solutions
 
             bool isDivisibleByFour = year%4 == 0;
             return isDivisibleByFour;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} {2}, {3}", DayOfWeek, Month, DayOfMonth, Year);
         }
     }
 
