@@ -123,7 +123,7 @@ namespace euler.solutions
 
     public static class EnumerationExtensions
     {
-        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        public static void Each<T>(this IEnumerable<T> collection, Action<T> action)
         {
             foreach (T item in collection)
                 action(item);
