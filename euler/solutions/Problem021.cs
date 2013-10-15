@@ -12,7 +12,7 @@ namespace euler.solutions
             Dictionary<int, int> divisorSums = new Dictionary<int, int>();
             Enumerable.Range(1, limit-1).Each(n =>
             {
-                var divisors = Divisors(n).ToArray();
+                var divisors = ProperDivisors(n).ToArray();
                 divisorSums.Add(n, divisors.Sum());
 
                 //string sDivisors = string.Join(",", divisors);
@@ -38,7 +38,7 @@ namespace euler.solutions
             Console.WriteLine("The sum of the amicable numbers under {0} is {1}", limit, amicableSum);
         }
 
-        private static IEnumerable<int> Divisors(int number)
+        public static IEnumerable<int> ProperDivisors(int number)
         {
             var divisors = new List<int> {1};
             if (number > 3)
