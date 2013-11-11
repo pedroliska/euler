@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace euler.solutions
 {
@@ -10,9 +11,9 @@ namespace euler.solutions
     {
         public static void Run()
         {
-            var fib = new Fibonacci();
-            int sum = 0;
-            int lastFib;
+            var fib = new FibonacciGenerator();
+            BigInteger sum = 0;
+            BigInteger lastFib;
             while ((lastFib = fib.Next()) < 4000000)
             {
                 if (lastFib%2 == 0)
@@ -22,26 +23,26 @@ namespace euler.solutions
         }
     }
 
-    public class Fibonacci
+    public class FibonacciGenerator
     {
-        private int last;
-        private int secondToLast = 1;
+        private BigInteger _last;
+        private BigInteger _secondToLast = 1;
 
-        public int Next()
+        public BigInteger Next()
         {
-            int retVal = last + secondToLast;
-            secondToLast = last;
-            last = retVal;
+            BigInteger retVal = _last + _secondToLast;
+            _secondToLast = _last;
+            _last = retVal;
             return retVal;
         }
 
-        public IEnumerable<int> Sequence()
+        public IEnumerable<BigInteger> Sequence()
         {
             while (true)
             {
-                int retVal = last + secondToLast;
-                secondToLast = last;
-                last = retVal;
+                BigInteger retVal = _last + _secondToLast;
+                _secondToLast = _last;
+                _last = retVal;
                 yield return retVal;
             }
         }
